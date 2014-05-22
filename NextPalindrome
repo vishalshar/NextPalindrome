@@ -1,0 +1,73 @@
+/**
+ *
+ * @author Vishal
+ */
+public class NextPalindrome {
+
+    // method to return length of given number
+    public static int length(int num) {
+        if (num == 0) {
+            return 1;
+        }
+
+        int length = 0;
+        while (num > 0) {
+            length++;
+            num = num / 10;
+        }
+        return length;
+    }
+
+    // method to reverse given number
+    public static int reverse(int num) {
+        if (num == 0) {
+            return 0;
+        }
+
+        int result = 0;
+        while (num > 0) {
+            result = (result * 10) + (num % 10);
+            num = num / 10;
+        }
+        return result;
+    }
+
+    public static void main(String args[]) {
+        int num1 = 1334;
+        int num2 = 12345;
+        System.out.println(nextPalindrome(num2));
+    }
+
+    // method to find next palindrome
+    public static int nextPalindrome(int num) {
+        String input = num + "";
+        String result = "";
+
+        if (input.length() % 2 == 0) {
+            String half = input.substring(0, (input.length() / 2));
+            String second = (new StringBuffer(half).reverse().toString());
+            result = half + second;
+            if (num < Integer.parseInt(result)) {
+                return Integer.parseInt(result);
+            } else {
+                half = (Integer.parseInt(half) + 1) + "";
+                second = (new StringBuffer(half).reverse().toString());
+                result = half + second;
+                return Integer.parseInt(result);
+            }
+        } else {
+            String buffer = input.charAt((input.length() / 2)) + "";
+            String half = input.substring(0, (input.length() / 2));
+            String second = (new StringBuffer(half).reverse().toString());
+            result = half +buffer+ second;
+            if (num < Integer.parseInt(result)) {
+                return Integer.parseInt(result);
+            } else {
+                half = (Integer.parseInt(half) + 1) + "";
+                second = (new StringBuffer(half).reverse().toString());
+                result = half + buffer+second;
+                return Integer.parseInt(result);
+            }
+        }
+    }
+}
