@@ -43,6 +43,20 @@ public class NextPalindrome {
         String input = num + "";
         String result = "";
 
+        /**
+        * Condition when the given input has even number of digits
+        * 1. Split the number into two half
+        * 2. Reverse the second half and perform first half + second half
+        * 3. check if the resultant is greater than input
+        * 4. if yes     
+        *       return;
+        * 5. else
+        *       increment the first half by 1
+        *       reverse and add it to first half
+        *       return resultant    
+        *       
+        **/
+        
         if (input.length() % 2 == 0) {
             String half = input.substring(0, (input.length() / 2));
             String second = (new StringBuffer(half).reverse().toString());
@@ -55,6 +69,21 @@ public class NextPalindrome {
                 result = half + second;
                 return Integer.parseInt(result);
             }
+            
+        /**
+        * Condition when the given input has odd number of digits
+        * 1. Split the number into two half. leaving center digit on niether side
+        * 2. Reverse the second half and perform first half + second half
+        * 3. check if the resultant is greater than input
+        * 4. if yes     
+        *       return;
+        * 5. else
+        *       increment the first half by 1 add center digit
+        *       reverse and add it to first half
+        *       return resultant    
+        *       
+        **/
+            
         } else {
             String buffer = input.charAt((input.length() / 2)) + "";
             String half = input.substring(0, (input.length() / 2));
